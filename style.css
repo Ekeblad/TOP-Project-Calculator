@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #bcbdc0;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  font-weight: 400;
+  font-size: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer {
+  background-color: #505050;
+  height: 50px;
+  padding-top: 10px;
+  width: 100vw;
+  color: white;
+  text-align: center;
+  font-size: small;
+}
+
+.calculator {
+  width: 300px;
+  height: 450px;
+  background-color: #1c1c1c;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+.screen {
+  height: 85px;
+  width: auto;
+  background-color: #505050;
+  padding: 10px;
+  border-radius: 1rem;
+  text-align: end;
+  font-size: 3rem;
+  line-height: 65px;
+  color: white;
+}
+
+.buttonarea {
+  height: 250px;
+  width: auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button {
+  flex: 1 0 21%;
+  margin: 5px;
+  height: 55px;
+  background-color: #505050;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 2rem;
+  color: white;
+  cursor: crosshair;
+  line-height: 55px;
+}
+
+.span-two {
+  flex: 1 0 46%;
+}
+
+.accent-grey {
+  background-color: #d4d4d2;
+  color: #1c1c1c;
+}
+
+.accent-orange {
+  background-color: #ff9500;
+  font-size: 2rem;
+}
