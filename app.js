@@ -22,13 +22,52 @@ for (let i = 0; i < buttons.length; i++) {
 //Defined a clickevent which fires functions for numbers, operands and equal signs
 function clickEvent(btnPress) {
   if (btnPress.classList.contains("number")) {
-    console.log(btnPress.dataset.value);
+    inputNumber(btnPress.dataset.value);
   } else if (btnPress.classList.contains("operator")) {
-    console.log(btnPress.dataset.value);
+    operatorAdd(btnPress.dataset.value, btnPress);
   } else if (btnPress.classList.contains("equals")) {
-    console.log(btnPress.dataset.value);
+    firstNumber = parseFloat(firstNumber);
+    secondNumber = parseFloat(secondNumber);
+    result = operate(operator, firstNumber, secondNumber);
+    displayNum = result;
+    firstNumber = result;
+    secondNumber = null;
   } else if (btnPress.classList.contains("clear")) {
     clearDisplay();
+  }
+  populateDisplay();
+}
+
+function inputNumber(value) {
+  if (firstNumber === null && operator === null) {
+    firstNumber = value;
+    displayNum = firstNumber;
+  } else if (firstNumber != null && operator === null) {
+    firstNumber += value;
+    displayNum = firstNumber;
+    console.log("Yet another number");
+  } else if (operator != null && secondNumber === null) {
+    secondNumber = value;
+    displayNum = secondNumber;
+  } else if (secondNumber != null) {
+    secondNumber += value;
+    displayNum = secondNumber;
+  }
+  // populateDisplay();
+  console.log(firstNumber);
+  console.log(secondNumber);
+  console.log(operator);
+}
+
+function operatorAdd(oper, btnPress) {
+  for (let i = 0; i < buttons.length; i++) {
+    if (btnPress) {
+      console.log(i);
+    }
+  }
+  operator = oper;
+  if (btnPress.classList.contains("active")) {
+    btnPress.className += " active";
   }
 }
 
@@ -62,6 +101,9 @@ function operate(operator, a, b) {
   b = Number(b);
   switch (operator) {
     case "/":
+      if (b == 0) {
+        return "You cray";
+      }
       return divide(a, b);
 
     case "*":

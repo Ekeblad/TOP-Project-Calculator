@@ -88,3 +88,8 @@ footer {
   background-color: #ff9500;
   font-size: 2rem;
 }
+
+.active {
+  background-color: #ffffff;
+  color: #1c1c1c;
+}
