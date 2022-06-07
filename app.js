@@ -30,7 +30,7 @@ function clickEvent(btnPress) {
   } else if (btnPress.classList.contains("clear")) {
     clearDisplay();
   } else if (btnPress.classList.contains("dot")) {
-    clearDisplay();
+    addDecimal(btnPress.dataset.value);
   }
   console.log(firstNumber);
   console.log(operator);
@@ -43,9 +43,6 @@ function inputNumber(value) {
   if ((firstNumber === null && operator === null) || firstNumber === result) {
     firstNumber = value;
     displayNum = firstNumber;
-    // } else if (firstNumber === result && operator === null) {
-    //   firstNumber = value;
-    //   displayNum = firstNumber;
   } else if (firstNumber != null && operator === null) {
     firstNumber += value;
     displayNum = firstNumber;
@@ -56,7 +53,6 @@ function inputNumber(value) {
     secondNumber += value;
     displayNum = secondNumber;
   }
-  // populateDisplay();
 }
 
 function operatorAdd(oper, btnPress) {
@@ -107,6 +103,10 @@ function inputEquals() {
       element.classList.remove("active");
     }
   });
+}
+
+function addDecimal(dot) {
+  // add decimal and check so it wont accept any more than 1 ,
 }
 
 function divide(a, b) {
