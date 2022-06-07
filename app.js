@@ -26,15 +26,16 @@ function clickEvent(btnPress) {
   } else if (btnPress.classList.contains("operator")) {
     operatorAdd(btnPress.dataset.value, btnPress);
   } else if (btnPress.classList.contains("equals")) {
-    firstNumber = parseFloat(firstNumber);
-    secondNumber = parseFloat(secondNumber);
-    result = operate(operator, firstNumber, secondNumber);
-    displayNum = result;
-    firstNumber = result;
-    secondNumber = null;
+    inputEquals();
   } else if (btnPress.classList.contains("clear")) {
     clearDisplay();
+  } else if (btnPress.classList.contains("dot")) {
+    clearDisplay();
   }
+  console.log(firstNumber);
+  console.log(operator);
+  console.log(secondNumber);
+
   populateDisplay();
 }
 
@@ -42,6 +43,8 @@ function inputNumber(value) {
   if (firstNumber === null && operator === null) {
     firstNumber = value;
     displayNum = firstNumber;
+  } else if (firstNumber != null && operator === null) {
+    // add so you wont add onto numbers to a string after
   } else if (firstNumber != null && operator === null) {
     firstNumber += value;
     displayNum = firstNumber;
@@ -54,20 +57,23 @@ function inputNumber(value) {
     displayNum = secondNumber;
   }
   // populateDisplay();
-  console.log(firstNumber);
-  console.log(secondNumber);
-  console.log(operator);
 }
 
 function operatorAdd(oper, btnPress) {
-  for (let i = 0; i < buttons.length; i++) {
-    if (btnPress) {
-      console.log(i);
+  buttons.forEach((element) => {
+    if (element.classList.contains("operator")) {
+      element.classList.remove("active");
     }
-  }
-  operator = oper;
-  if (btnPress.classList.contains("active")) {
-    btnPress.className += " active";
+  });
+  if (firstNumber != null) {
+    operator = oper;
+    if (btnPress.classList.contains("active") === false) {
+      btnPress.classList.add("active");
+      console.log("added");
+    } else if (btnPress.classList.contains("active")) {
+      btnPress.classList.remove("active");
+      console.log("removed");
+    }
   }
 }
 
@@ -78,6 +84,29 @@ function clearDisplay() {
   operator = null;
   result = null;
   populateDisplay();
+  buttons.forEach((element) => {
+    if (element.classList.contains("operator")) {
+      element.classList.remove("active");
+    }
+  });
+}
+
+function inputEquals() {
+  if (firstNumber === null || secondNumber === null) {
+    return;
+  }
+  firstNumber = parseFloat(firstNumber);
+  secondNumber = parseFloat(secondNumber);
+  result = operate(operator, firstNumber, secondNumber);
+  displayNum = result;
+  firstNumber = result;
+  secondNumber = null;
+  operator = null;
+  buttons.forEach((element) => {
+    if (element.classList.contains("operator")) {
+      element.classList.remove("active");
+    }
+  });
 }
 
 function divide(a, b) {
