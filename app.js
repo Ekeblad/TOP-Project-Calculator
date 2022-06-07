@@ -40,15 +40,15 @@ function clickEvent(btnPress) {
 }
 
 function inputNumber(value) {
-  if (firstNumber === null && operator === null) {
+  if ((firstNumber === null && operator === null) || firstNumber === result) {
     firstNumber = value;
     displayNum = firstNumber;
-  } else if (firstNumber != null && operator === null) {
-    // add so you wont add onto numbers to a string after
+    // } else if (firstNumber === result && operator === null) {
+    //   firstNumber = value;
+    //   displayNum = firstNumber;
   } else if (firstNumber != null && operator === null) {
     firstNumber += value;
     displayNum = firstNumber;
-    console.log("Yet another number");
   } else if (operator != null && secondNumber === null) {
     secondNumber = value;
     displayNum = secondNumber;
