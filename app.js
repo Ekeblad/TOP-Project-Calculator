@@ -105,8 +105,23 @@ function inputEquals() {
   });
 }
 
+// add decimal and check so it wont accept any more than 1 ,
 function addDecimal(dot) {
-  // add decimal and check so it wont accept any more than 1 ,
+  if (!firstNumber.includes(dot)) {
+    if (operator === null) {
+      firstNumber += dot;
+      console.log(firstNumber);
+      return;
+    }
+  }
+  if (!secondNumber.includes(dot)) {
+    if (operator != null) {
+      secondNumber += dot;
+      console.log(secondNumber);
+      return;
+    }
+  }
+  populateDisplay();
 }
 
 function divide(a, b) {
