@@ -1,6 +1,5 @@
 const display = document.querySelector(".screen");
 const buttons = document.querySelectorAll(".button");
-console.log(buttons);
 
 let displayNum = "0";
 let firstNumber = null;
@@ -68,10 +67,8 @@ function operatorAdd(oper, btnPress) {
     operator = oper;
     if (btnPress.classList.contains("active") === false) {
       btnPress.classList.add("active");
-      console.log("added");
     } else if (btnPress.classList.contains("active")) {
       btnPress.classList.remove("active");
-      console.log("removed");
     }
   }
 }
