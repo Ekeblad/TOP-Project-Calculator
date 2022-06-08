@@ -31,11 +31,14 @@ function clickEvent(btnPress) {
     clearDisplay();
   } else if (btnPress.classList.contains("dot")) {
     addDecimal(btnPress.dataset.value);
+  } else if (btnPress.classList.contains("sign")) {
+    changeSign();
+  } else if (btnPress.classList.contains("percent")) {
+    percentConversion();
   }
   console.log(firstNumber);
   console.log(operator);
   console.log(secondNumber);
-
   populateDisplay();
 }
 
@@ -110,18 +113,55 @@ function addDecimal(dot) {
   if (!firstNumber.includes(dot)) {
     if (operator === null) {
       firstNumber += dot;
-      console.log(firstNumber);
       return;
     }
   }
   if (!secondNumber.includes(dot)) {
     if (operator != null) {
       secondNumber += dot;
-      console.log(secondNumber);
       return;
     }
   }
-  populateDisplay();
+  // populateDisplay();
+}
+
+// change +- sign of a value
+function changeSign() {
+  let negative = "-";
+  if (operator == null) {
+    if (!firstNumber.includes("-")) {
+      firstNumber = negative += firstNumber;
+      displayNum = firstNumber;
+    } else if (firstNumber.includes("-")) {
+      firstNumber = firstNumber.substring(1);
+      displayNum = firstNumber;
+    }
+    displayNum = firstNumber;
+    return;
+  }
+
+  if (operator != null) {
+    if (!secondNumber.includes("-")) {
+      secondNumber = negative += secondNumber;
+    } else if (secondNumber.includes("-")) {
+      secondNumber = secondNumber.substring(1);
+    }
+    displayNum = secondNumber;
+    return;
+  }
+}
+
+function percentConversion() {
+  if (operator == null) {
+    firstNumber = firstNumber / 100;
+    displayNum = firstNumber;
+    return;
+  }
+  if (operator != null) {
+    secondNumber = secondNumber / 100;
+    displayNum = secondNumber;
+    return;
+  }
 }
 
 function divide(a, b) {
